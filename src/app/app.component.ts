@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -12,13 +12,12 @@ export class AppComponent implements OnInit {
   title = 'app';
   posts: Post[] = [];
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
-      .map((response: Response) => response.json() as Post[])
-      .subscribe((posts: Post[]) => this.posts = posts);
+    this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts')
+      .subscribe((data) => this.posts = data as Post[]);
   }
 }
 

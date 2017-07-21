@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpModule} from '@angular/http';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {MyInterceptor} from './http-interceptor';
@@ -12,7 +11,7 @@ import {MyInterceptor} from './http-interceptor';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
